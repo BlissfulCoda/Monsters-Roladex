@@ -12,8 +12,7 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
-
-    
+  
   }
 
   //use fetch and promises to make an API call
@@ -35,6 +34,7 @@ class App extends Component {
 
     return (
       <div className="App">
+      <h1> Monsters Roladex </h1>
         <Searchbox
           placeholder="search monsters"
           handleChange={this.handleChange}
