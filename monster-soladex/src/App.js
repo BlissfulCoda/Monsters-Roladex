@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Cardlist } from './components/card-list/card-list.component';
-
+import { Searchbox } from './components/searchbox/searchbox.component';
 // https://jsonplaceholder.typicode.com/users
 
 class App extends Component {
@@ -21,19 +21,17 @@ class App extends Component {
       .then(users => this.setState({ monsters: users }));
   }
 
-  render(){
+  render() {
     const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter(monster => 
-      monster.name.toLowerCase().includes(searchField)
-      )
+    const filteredMonsters = monsters.filter(monster =>
+      monster.name.toLocaleLowerCase().includes(searchField)
+    );
 
     return (
       <div className="App">
-        <input
-          type="search"
+        <Searchbox
           placeholder="search monsters"
-          onChange={e => this.setState({ searchField: e.target.value.toLocaleLowerCase()})
-          }
+          handleChange={e => this.setState({ searchField: e.target.value })}
         />
         <Cardlist monsters={filteredMonsters} />
       </div>
